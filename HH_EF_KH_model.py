@@ -8,7 +8,7 @@ Created on Wed Oct 13 18:23:37 2021
 
 """
 The HHModel tracks conductances of 3 channels, depending on time and voltage,
-while keeping Vm at a fixed valu.
+while keeping Vm at a fixed value.
 
 The 3 channels are :
     - Potassium channel
@@ -20,12 +20,6 @@ K = potassium
 L = Leak (leakage current ions)
 """
 
-"""
-The SquidModel class contains the differentiel equation of
-the Hodgkin and Huxley model and parameters.
-Default parameters are those taken from the original article
-"""
-##################################################################################
 import os
 import numpy as np
 import matplotlib.pyplot as plt
@@ -137,11 +131,31 @@ class Simulation :
             self.StateM[i] = self.model.m.f
             self.StateN[i] = self.model.n.f
         print("simulation complete")
+        # plot the results with MatPlotLib
+        plt.figure(figsize=(10, 8))
+        
+        ax1 = plt.subplot(311)
+        ax1.plot(sim.times, sim.Vm - 70, color='b')
+        ax1.set_ylabel("Potential (mV)")
+        ax1.set_xlabel(" Time (ms)")
+        ax1.set_title("Hodgkin-Huxley Spiking Neuron Model", fontSize=15)
+        
+        
+        ax2 = plt.subplot(312, sharex=ax1)
+        ax2.plot(sim.times, sim.INa, label='INa')
+        ax2.plot(sim.times, sim.IK, label='IK')
+        ax2.plot(sim.times, sim.IKleak, label='ILeak')
+        ax2.set_ylabel("Current (µA/cm²)")
+        ax2.set_xlabel(" Time (ms)")
+        ax2.legend()
+        
+        plt.tight_layout()
+        plt.show()
+        #saveplot
 
 
 
-
-# RunSimulation a simulation
+# Run a simulation
 
 # customize a neuron model if desired
 model = HHModel()
@@ -159,24 +173,5 @@ sim = Simulation(model)
 sim.RunSimulation(membraneVoltage=target_voltage, stepSizeMs=0.01)
 
 
-# plot the results with MatPlotLib
-plt.figure(figsize=(10, 8))
-
-ax1 = plt.subplot(311)
-ax1.plot(sim.times, sim.Vm - 70, color='b')
-ax1.set_ylabel("Potential (mV)")
-ax1.set_title("Hodgkin-Huxley Spiking Neuron Model", fontSize=16)
-
-
-ax4 = plt.subplot(312, sharex=ax1)
-ax4.plot(sim.times, sim.INa, label='VGSC')
-ax4.plot(sim.times, sim.IK, label='VGKC')
-ax4.plot(sim.times, sim.IKleak, label='KLeak')
-ax4.set_ylabel("Current (µA/cm²)")
-ax4.set_xlabel("Simulation Time (milliseconds)")
-ax4.legend()
-
-plt.tight_layout()
-plt.show()
 
     
