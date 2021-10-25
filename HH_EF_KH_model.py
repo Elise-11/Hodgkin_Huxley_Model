@@ -136,7 +136,7 @@ class Simulation :
         
         ax1 = plt.subplot(311)
         ax1.plot(sim.times, sim.Vm - 70, color='b')
-        ax1.set_ylabel("Potential (mV)")
+        ax1.set_ylabel("Membrane Potential (mV)")
         ax1.set_xlabel(" Time (ms)")
         ax1.set_title("Hodgkin-Huxley Spiking Neuron Model", fontSize=15)
         
@@ -157,7 +157,7 @@ class Simulation :
 
 # Run a simulation
 
-# customize a neuron model if desired
+#Change HHmodel parameters (matrix)
 model = HHModel()
 model.gNa = 120  # typically 120
 model.gK = 36  # typically 36
@@ -171,6 +171,17 @@ target_voltage[7000:13000] = 45  # add a square pulse
 # simulate the model cell using the custom waveform
 sim = Simulation(model)
 sim.RunSimulation(membraneVoltage=target_voltage, stepSizeMs=0.01)
+
+
+
+target_voltage2 = np.zeros(5000)
+target_voltage2[1200:3800] = 20
+
+sim2 = Simulation(model)
+sim2.RunSimulation(membraneVoltage=target_voltage2, stepSizeMs=0.05)
+
+
+
 
 
 
