@@ -7,21 +7,10 @@ Created on Wed Oct 13 18:23:37 2021
 """
 
 """
-The Hodgkin-Huxley model is a mathematical model describing action potentials 
-of neurons. It is composed of nonlinear differential equations 
-that approximate the electrical characteristics of excitable cells. 
-
-The Hodgkin Huxley Model tracks conductances of 3 channels, 
-depending on time and voltage,while keeping electrical potential of the
-membrane at a fixed value.
-
-The 3 channels are :
-    - Potassium channel
-    - Sodium channel
-    - leak channel
-    
-NA = sodium
-K = potassium
+Terminology 
+----------
+NA = sodium ions
+K = potassium ions
 L = Leak (leakage current ions)
 """
 
