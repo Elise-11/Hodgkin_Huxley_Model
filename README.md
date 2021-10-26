@@ -24,7 +24,18 @@ sudo apt -y upgrade
 python3 -V
 ```
 
-## Launch the program (Command line)
+* The project uses matplotlib and numpy, if you don't have these packages, you can download them with the following commands.
+```{}
+sudo apt-get install python3-matplotlib
+sudo apt install python3-numpy
+```
+
+### Files content
+
+* HH_EF_KH_model.py : 
+* HH_EF_KH_controller.py : 
+
+### Launch the program (Command line)
 * clone the repository Hodgkin_Huxley_Model, and move to the directory Hodgkin_Huxley_Model. 
 ```{}
 git clone https://github.com/Elise-11/Hodgkin_Huxley_Model.git
