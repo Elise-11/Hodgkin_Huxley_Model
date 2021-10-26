@@ -59,6 +59,6 @@ python3 HH_EF_KH_controller.py
 
 ### Limits 
 
-###Fitzhugh-Nagumo Model
+### Fitzhugh-Nagumo Model
 
 
