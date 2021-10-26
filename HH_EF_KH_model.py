@@ -208,6 +208,10 @@ class Simulation :
             self.n_state[i] = self.model.n.f
         print("simulation completed")
         
+
+
+        
+        
         # plot the results with MatPlotLib
 
 
@@ -226,7 +230,7 @@ target_voltage[7000:13000] = 45  # add a square pulse
 sim = Simulation(model)
 sim.runSimulation(membraneVoltage=target_voltage, stepMs=0.01)
 plt.figure(figsize=(10, 8))
-
+        
 #membrane potential 
 ax1 = plt.subplot(311)
 ax1.plot(sim.times, sim.Vm - 70, color='b')
