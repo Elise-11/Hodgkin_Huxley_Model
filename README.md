@@ -1,5 +1,5 @@
 ![Python 3.9.5](https://img.shields.io/badge/Python-3.9.5-blue.svg)
-![Numpy](https://img.shields.io/badge/Dependencie-Numpy-green.svg)
+![Numpy](https://img.shields.io/badge/Dependencie-Numpy|Matplotlib-green.svg)
 ![Matplotlib](https://img.shields.io/badge/Dependencie-Matplotlib-green.svg)
 
 # M2 DLAD Mathematics Project
