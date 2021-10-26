@@ -48,6 +48,9 @@ class Gate:
         alphaRate = self.alpha * (1-self.f)
         betaRate = self.beta * self.f
         self.f += time * (alphaRate - betaRate)
+    
+    def setInfiniteState(self):
+            self.f = self.alpha / (self.alpha + self.beta)
 
 
 class HHModel (Gate) : 
@@ -80,6 +83,9 @@ class HHModel (Gate) :
         """
         self.Vm = startingVoltage
         self.setGatingVar(startingVoltage)
+        self.m.setInfiniteState()
+        self.n.setInfiniteState()
+        self.n.setInfiniteState()
 
 
     def setGatingVar(self, Vm):
@@ -121,10 +127,11 @@ class HHModel (Gate) :
         Gl = gLeak
         ILeak = Gl(Vm - ELeak)
         """
-        self.Vm = membraneVoltage
         self.INa = np.power(self.m.f, 3) * self.gNa * self.h.f*(self.Vm-self.ENa)
         self.IK = np.power(self.n.f, 4) * self.gK * (self.Vm-self.EK)
         self.ILeak = self.gLeak * (self.Vm-self.ELeak)
+        Isum = membraneVoltage - self.INa - self.IK - self.ILeak
+        self.Vm += time * Isum / self.Cm
         
 
     def updateGate(self, time):
