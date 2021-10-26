@@ -15,6 +15,7 @@ L = Leak (leakage current ions)
 """
 
 import numpy as np
+from scipy.integrate import odeint
 
 class Gate:
     """
@@ -33,7 +34,7 @@ class Gate:
     f = 0
 
     #update gating variable 
-    def update(self, time):
+    def update(self,time):
         """
         Equations
         ----------
@@ -48,9 +49,12 @@ class Gate:
         alphaRate = self.alpha * (1-self.f)
         betaRate = self.beta * self.f
         self.f += time * (alphaRate - betaRate)
+
     
-    def setInfiniteState(self):
+    def setInfiniteState(self,time):
+        #resolve equation self.f = odeint(self.alpha*(1-self.f)-self.beta(f),y0,time)
             self.f = self.alpha / (self.alpha + self.beta)
+        
 
 
 class HHModel (Gate) : 
@@ -83,7 +87,7 @@ class HHModel (Gate) :
         """
         self.Vm = startingVoltage
         self.setGatingVar(startingVoltage)
-        self.m.setInfiniteState()
+        self.m = odeint(self.m.alpha(self.Vm)*(1.0-self.m) - self.m.beta(self.Vm)*self.m)
         self.n.setInfiniteState()
         self.n.setInfiniteState()
 
