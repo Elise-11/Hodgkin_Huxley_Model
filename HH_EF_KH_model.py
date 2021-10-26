@@ -22,11 +22,12 @@ class Gate:
     The Gate class contains the functions related to the state of the open 
     or closed channels which depends on the time and is controlled by the 
     gating variable f, which follows the following differential equation: 
-        df/dt = αf (1-f)- ßf(f)
+        df/dt = αf (1-f) - ßf(f)
     the channel opens for: 
         dα/dt = α (1-f)
     the channel closes for : 
         dß/dt = ß(f)
+    so df/dt = dα/dt - dß/dt * time
     """
     #initialization of variables to 0 
     alpha = 0
@@ -48,12 +49,13 @@ class Gate:
         """
         alphaRate = self.alpha * (1-self.f)
         betaRate = self.beta * self.f
+        #equa dif propotion de canaux ouverts 
         self.f += time * (alphaRate - betaRate)
 
     
-    def setInfiniteState(self,time):
-        #resolve equation self.f = odeint(self.alpha*(1-self.f)-self.beta(f),y0,time)
-            self.f = self.alpha / (self.alpha + self.beta)
+    def inifiniteGateState(self):
+        #propotion of open channels = opening channels / total channels
+        self.f = self.alpha / (self.alpha + self.beta)
         
 
 
@@ -87,9 +89,9 @@ class HHModel (Gate) :
         """
         self.Vm = startingVoltage
         self.setGatingVar(startingVoltage)
-        self.m = odeint(self.m.alpha(self.Vm)*(1.0-self.m) - self.m.beta(self.Vm)*self.m)
-        self.n.setInfiniteState()
-        self.n.setInfiniteState()
+        self.m.inifiniteGateState()
+        self.n.inifiniteGateState()
+        self.n.inifiniteGateState()
 
 
     def setGatingVar(self, Vm):

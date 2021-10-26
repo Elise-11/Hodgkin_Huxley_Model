@@ -15,10 +15,14 @@ import os
 
 #possibility to change the values of the model parameter 
 model = HHModel()
+model.Cm = 1 #typically 1 
 model.gNa = 120 # typically 120
 model.gK = 36  # typically 36
 model.ENa = 115  # typically 115
 model.EK = -12  # typically -12
+model.gLeak = 0.3 #typicaly 0.03
+model.ELeak = 10.6 #typically 10.6
+
 
 
 # customize a stimulus waveform
@@ -67,8 +71,6 @@ ax4 = plt.subplot(414)
 ax4.plot(sim.times, sim.Vm-70, color='b')
 ax4.set_ylabel("Potential (mV)")
 ax4.set_xlabel(" Time (ms)")
-
-
 
 
 #plt.text(0.02, 0,textstr, fontsize=14)
