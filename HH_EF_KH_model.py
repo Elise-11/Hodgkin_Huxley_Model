@@ -165,37 +165,53 @@ class HHModel (Gate) :
 class Simulation : 
 
     def __init__(self, model):
+        """
+        Initialization of the simulation 
+        """
         self.model = model
         self.createArrays(0, 0)
-        pass
+        
 
-    def createArrays(self, pointCount, time):
-        self.times = np.arange(pointCount) * time
-        self.Vm = np.empty(pointCount)
-        self.INa = np.empty(pointCount)
-        self.IK = np.empty(pointCount)
-        self.ILeak = np.empty(pointCount)
-        self.StateN = np.empty(pointCount)
-        self.StateM = np.empty(pointCount)
-        self.StateH = np.empty(pointCount)
-
-    def runSimulation(self, membraneVoltage, stepSizeMs):
-        self.createArrays(len(membraneVoltage), stepSizeMs)
-        print(f"simulating {len(membraneVoltage)} time points...")
+    def createArrays(self, nbPoints, time):
+        """
+        Arrays 
+        -----------
+        Creation of a empty table for each parameter to store the values 
+        according to the time. The size of the tables is the number of points
+        we want to observe on. 
+        """
+        self.times = np.arange(nbPoints) * time
+        self.Vm, self.ILeak = np.empty(nbPoints),np.empty(nbPoints)
+        self.INa, self.IK = np.empty(nbPoints), np.empty(nbPoints)
+        self.n_state, self.m_state, self.h_state = np.empty(nbPoints),\
+            np.empty(nbPoints),np.empty(nbPoints)
+    
+    def runSimulation(self, membraneVoltage, stepMs):
+        """
+        Calculations
+        -----------
+        Calculation of each value of the current and opening or closing 
+        parameters for each channels according to the fchanging membrane 
+        voltage and time. 
+        """
+        self.createArrays(len(membraneVoltage), stepMs)
+        points_number = str(len(membraneVoltage))
+        print("Time points simulation : "+ points_number)
         for i in range(len(membraneVoltage)):
-            self.model.runModel(membraneVoltage[i], stepSizeMs)
+            self.model.runModel(membraneVoltage[i], stepMs)
             self.Vm[i] = self.model.Vm
             self.INa[i] = self.model.INa
             self.IK[i] = self.model.IK
             self.ILeak[i] = self.model.ILeak
-            self.StateH[i] = self.model.h.f
-            self.StateM[i] = self.model.m.f
-            self.StateN[i] = self.model.n.f
-        print("simulation complete")
+            self.h_state[i] = self.model.h.f
+            self.m_state[i] = self.model.m.f
+            self.n_state[i] = self.model.n.f
+        print("simulation completed")
+        
         # plot the results with MatPlotLib
 
 
-#Change HHmodel parameters (matrix)
+#possibility to change the values of the model parameter 
 model = HHModel()
 model.gNa = 120  # typically 120
 model.gK = 36  # typically 36
@@ -203,25 +219,25 @@ model.EK = -12  # typically -12
 model.ENa = 115  # typically 115
 
 # customize a stimulus waveform
-target_voltage = 0*np.ones(20000)
+target_voltage = np.zeros(20000)
 target_voltage[7000:13000] = 45  # add a square pulse
 
 # simulate the model cell using the custom waveform
 sim = Simulation(model)
-sim.runSimulation(membraneVoltage=target_voltage, stepSizeMs=0.01)
+sim.runSimulation(membraneVoltage=target_voltage, stepMs=0.01)
 plt.figure(figsize=(10, 8))
 
 ax1 = plt.subplot(311)
 ax1.plot(sim.times, sim.Vm - 70, color='b')
 ax1.set_ylabel("Membrane Potential (mV)")
 ax1.set_xlabel(" Time (ms)")
-ax1.set_title("Hodgkin-Huxley Spiking Neuron Model", fontSize=15)
+ax1.set_title("Hodgkin-Huxley Model", fontSize=15)
 
 
 ax2 = plt.subplot(312, sharex=ax1)
-ax2.plot(sim.times, sim.INa, label='INa')
-ax2.plot(sim.times, sim.IK, label='IK')
-ax2.plot(sim.times, sim.ILeak, label='ILeak')
+ax2.plot(sim.times, sim.INa, label='INa', color='cyan')
+ax2.plot(sim.times, sim.IK, label='IK', color = 'red')
+ax2.plot(sim.times, sim.ILeak, label='ILeak', color = 'pink')
 ax2.set_ylabel("Current (µA/cm²)")
 ax2.set_xlabel(" Time (ms)")
 ax2.legend()
