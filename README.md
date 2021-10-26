@@ -2,11 +2,17 @@
 # M2 DLAD Mathematics Project
 
 
-## Hodgkin_Huxley_Model
+## Hodgkin_Huxley_Model project
 
 * This project aims to implement the Hodgkin Huxley-Model
 * The programming language used is python.
 
+
+## Hodgkin_Huxley_Model
+
+    *
+    *
+    *
 
 ### Dependencies 
 
@@ -15,11 +21,10 @@
 ```{}
 sudo apt update
 sudo apt -y upgrade
-
 python3 -V
 ```
 
-### Launch the program (Command line)
+## Launch the program (Command line)
 * clone the repository Hodgkin_Huxley_Model, and move to the directory Hodgkin_Huxley_Model. 
 ```{}
 git clone https://github.com/Elise-11/Hodgkin_Huxley_Model.git
