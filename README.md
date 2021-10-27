@@ -61,10 +61,5 @@ python3 HH_EF_KH_view.py
 
 ### Simulations Examples 
 
-### Equilibrium 
-
-### Limits 
-
-### Fitzhugh-Nagumo Model
 
 
