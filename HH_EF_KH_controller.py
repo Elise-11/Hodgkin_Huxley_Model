@@ -8,6 +8,7 @@ from HH_EF_KH_model import HHModel, Simulation
 import numpy as np
 from matplotlib import pyplot as plt
 import os
+import tkinter as tk
 
 # plot the results with MatPlotLib
 model = HHModel()
@@ -42,8 +43,8 @@ def plotSimulation():
     ax1.set_ylabel("Stimulation (µA/cm²)")
     ax1.set_xlabel(" Time (ms)")
     ax1.set_title("Hodgkin-Huxley Model", fontSize=15)
-    textstr = 'Cm=%2f\ngNa=%.2f\ngK=%.2f\nENa=%.2f\nEK=%.2f\n'%(model.Cm,model.gNa, model.gK, model.ENa,model.EK)
-    ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes, fontsize=8,
+    textstr = 'Cm=%2f\ngNa=%.2f\ngK=%.2f\ngLeak=%2f\nENa=%.2f\nEK=%.2f\nELeak=%.2f\n'%(model.Cm,model.gNa, model.gK, model.gLeak, model.ENa,model.EK,model.ELeak)
+    ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes, fontsize=6,
             verticalalignment='top')
     
     
@@ -87,7 +88,9 @@ def savePlot():
     filename = filename.format(counter)
     Figure.savefig(filename)
 
-#ça fonctionne en lançant ces 3 commandes 
+
 #setParam(14,120,36,0.03,115,-12,10.6)
 #plotSimulation()
 #savePlot()
+
+
