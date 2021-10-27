@@ -40,7 +40,7 @@ def plotSimulation():
     
     ax1 = Fig1.add_subplot(411)
     ax1.plot(sim.times, stimu, color='deeppink')
-    ax1.set_ylabel("Stimulation (µA/cm²)")
+    ax1.set_ylabel("Stimulation (µA/cm²)",fontsize = 8)
     ax1.set_xlabel(" Time (ms)")
     ax1.set_title("Hodgkin-Huxley Model", fontSize=15)
     textstr = 'Cm=%2f\ngNa=%.2f\ngK=%.2f\ngLeak=%2f\nENa=%.2f\nEK=%.2f\nELeak=%.2f\n'%(model.Cm,model.gNa, model.gK, model.gLeak, model.ENa,model.EK,model.ELeak)
@@ -54,7 +54,7 @@ def plotSimulation():
     ax2.plot(sim.times, sim.m_state, label='m', color="dodgerblue")
     ax2.plot(sim.times, sim.n_state, label='n', color = "red")
     ax2.set_xlabel(" Time (ms)")
-    ax2.set_ylabel("Gating variable activation", fontsize = 10)
+    ax2.set_ylabel("Gating variable activation", fontsize = 8)
     ax2.legend(loc="upper right")
     
     #Currents
@@ -62,14 +62,14 @@ def plotSimulation():
     ax3.plot(sim.times, sim.INa, label='INa', color='cyan')
     ax3.plot(sim.times, sim.IK, label='IK', color = 'red')
     ax3.plot(sim.times, sim.ILeak, label='ILeak', color = 'pink')
-    ax3.set_ylabel("Current (µA/cm²)")
+    ax3.set_ylabel("Current (µA/cm²)",fontsize = 8)
     ax3.set_xlabel(" Time (ms)")
     ax3.legend(loc = "upper right")
     
     #membrane potential 
     ax4 = Fig1.add_subplot(414)
     ax4.plot(sim.times, sim.Vm-70, color='b')
-    ax4.set_ylabel("Potential (mV)")
+    ax4.set_ylabel("Potential (mV)",fontsize = 8)
     ax4.set_xlabel(" Time (ms)")
 
     #plt.text(0.02, 0,textstr, fontsize=14)

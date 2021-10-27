@@ -96,20 +96,16 @@ ELeak_var.set("10.6")
 ELeak_entry = tk.Entry(root,textvariable = ELeak_var,width=3)
 ELeak_entry.grid(row=2,column=9)
 
-    
 #Button
-val_button = tk.Button(text ="validate", command= validate)
-save_button = tk.Button(text ="Save", command= hh.savePlot)
+val_button = tk.Button(text ="Plot", command= validate)
+save_button = tk.Button(text ="Save Plot", command= hh.savePlot)
 
-val_button.grid(row=3,column=4)
-save_button.grid(row=3,column=3)
-
+val_button.grid(row=3,column=3)
+save_button.grid(row=3,column=4)
 
 #canvas
 empty_canvas = tk.Canvas(root, bg="white", height=400, width=500)
 empty_canvas.grid(row=3,column=1)
-
-
 
 root.mainloop()
 root.destroy()
