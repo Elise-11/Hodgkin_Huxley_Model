@@ -14,23 +14,20 @@ root = tk.Tk()
 root.title('Hodgkin_Huxley Model Simulation')
 root.geometry('900x700')
 
-
-
-# def changeParam():
-#     hh.setParam(entries...)
-    
+#setparam puis sim
 #Plot 
 def plot():
+    #hh.setParam(entries....)
     canvas = plt.backends.backend_tkagg.FigureCanvasTkAgg(hh.plotSimulation(),master = root)
     canvas.draw()
     canvas.get_tk_widget().grid(row=2,column=3)
     
 #Button
-valid_param = tk.Button(text ="Validate parameters",command=changeParam())
+
 show_button = tk.Button(text ="Show", command= plot)
 save_button = tk.Button(text ="Save", command= hh.savePlot)
 
-valid_param.grid(row=4, column=1)
+
 show_button.grid(row=4,column=3)
 save_button.grid(row=4,column=4)
 

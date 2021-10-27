@@ -24,10 +24,10 @@ def setParam(Cm, gNa, gK, gLeak,ENa, EK,ELeak):
     model.ELeak = ELeak #typically 10.6
     return(Cm, gNa, gK, gLeak,ENa, EK,ELeak)
 
-
+#setParam(10,120,36,0.03,115,-12,10.6)
 
 def plotSimulation(): 
-    setParam(1,120,36,0.03,115,-12,10.6)
+
     # customize a stimulus waveform
     stimu = np.zeros(20000)
     stimu[7000:13000] = 45  # add a square pulse
@@ -91,5 +91,5 @@ def savePlot():
     Figure.savefig(filename)
 
 
-plotSimulation()
+#plotSimulation()
 #savePlot()
