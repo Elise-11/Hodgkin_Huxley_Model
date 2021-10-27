@@ -24,10 +24,9 @@ def setParam(Cm, gNa, gK, gLeak,ENa, EK,ELeak):
     model.ELeak = ELeak #typically 10.6
     return(Cm, gNa, gK, gLeak,ENa, EK,ELeak)
 
-#setParam(10,120,36,0.03,115,-12,10.6)
+#setParam(5, gNa, gK, gLeak,ENa, EK,ELeak)
 
 def plotSimulation(): 
-
     # customize a stimulus waveform
     stimu = np.zeros(20000)
     stimu[7000:13000] = 45  # add a square pulse
@@ -36,7 +35,7 @@ def plotSimulation():
     sim = Simulation(model)
     sim.runSimulation(membraneVoltage=stimu, stepMs=0.01)
     
-    Fig1 = plt.figure(figsize=(10, 8))
+    Fig1 = plt.figure(figsize=(8, 6))
     #stimulation
     
     ax1 = Fig1.add_subplot(411)
@@ -44,8 +43,8 @@ def plotSimulation():
     ax1.set_ylabel("Stimulation (µA/cm²)")
     ax1.set_xlabel(" Time (ms)")
     ax1.set_title("Hodgkin-Huxley Model", fontSize=15)
-    textstr = 'gNa=%.2f\ngK=%.2f\nENa=%.2f\nEK=%.2f\n'%(model.gNa, model.gK, model.ENa,model.EK)
-    ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes, fontsize=10,
+    textstr = 'Cm=%2f\ngNa=%.2f\ngK=%.2f\nENa=%.2f\nEK=%.2f\n'%(model.Cm,model.gNa, model.gK, model.ENa,model.EK)
+    ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes, fontsize=8,
             verticalalignment='top')
     
     
@@ -90,6 +89,6 @@ def savePlot():
     filename = filename.format(counter)
     Figure.savefig(filename)
 
-
+#setParam(14,120,36,0.03,115,-12,10.6)
 #plotSimulation()
-#savePlot()
+# savePlot()
