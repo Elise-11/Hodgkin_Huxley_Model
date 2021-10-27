@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 13 18:23:37 2021
-
 @author: fabre
 """
 #imports 
@@ -12,21 +10,24 @@ from matplotlib import pyplot as plt
 import os
 
 # plot the results with MatPlotLib
-
-
-#possibility to change the values of the model parameter 
 model = HHModel()
-model.Cm = 1 #typically 1 
-model.gNa = 120 # typically 120
-model.gK = 36  # typically 36
-model.ENa = 115  # typically 115
-model.EK = -12  # typically -12
-model.gLeak = 0.3 #typicaly 0.03
-model.ELeak = 10.6 #typically 10.6
 
 
-def plotSimulation() : 
-    
+def setParam(Cm, gNa, gK, gLeak,ENa, EK,ELeak):
+    #possibility to change the values of the model parameter 
+    model.Cm = Cm#typically 1 
+    model.gNa = gNa # typically 120
+    model.gK = gK # typically 36
+    model.gLeak = gLeak #typicaly 0.03
+    model.ENa = ENa  # typically 115
+    model.EK = EK  # typically -12
+    model.ELeak = ELeak #typically 10.6
+    return(Cm, gNa, gK, gLeak,ENa, EK,ELeak)
+
+
+
+def plotSimulation(): 
+    setParam(1,120,36,0.03,115,-12,10.6)
     # customize a stimulus waveform
     stimu = np.zeros(20000)
     stimu[7000:13000] = 45  # add a square pulse
@@ -54,7 +55,7 @@ def plotSimulation() :
     ax2.plot(sim.times, sim.m_state, label='m', color="dodgerblue")
     ax2.plot(sim.times, sim.n_state, label='n', color = "red")
     ax2.set_xlabel(" Time (ms)")
-    ax2.set_ylabel("Gating variable activation")
+    ax2.set_ylabel("Gating variable activation", fontsize = 10)
     ax2.legend(loc="upper right")
     
     #Currents
@@ -88,6 +89,7 @@ def savePlot():
         counter += 1
     filename = filename.format(counter)
     Figure.savefig(filename)
+
 
 plotSimulation()
 #savePlot()
