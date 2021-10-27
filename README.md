@@ -7,16 +7,17 @@
 
 ## Hodgkin_Huxley_Model project
 
-* This project aims to implement the Hodgkin Huxley-Model
+* This project aims to implement the Hodgkin Huxley-Model.
 * The programming language used is python.
+* the visualization of the plots of the model are done under an interactive Tkinter interface.
 
 
 ## Hodgkin_Huxley_Model
 
-    *The Hodgkin-Huxley model is a mathematical model describing action potentials of neurons. 
+    * The Hodgkin-Huxley model is a mathematical model describing action potentials of neurons. 
      It is composed of nonlinear differential equations that approximate the electrical characteristics of excitable cells. 
      
-    *The Hodgkin Huxley Model tracks conductances of 3 channels, depending on time and voltage,while keeping electrical potential of the membrane at a fixed value.
+    * The Hodgkin Huxley Model tracks conductances of 3 channels, depending on time and voltage,while keeping electrical potential of the membrane at a fixed value.
     
     * The 3 channels are : Potassium channel, Sodium channel and Leak channel
     
@@ -30,11 +31,12 @@ sudo apt -y upgrade
 python3 -V
 ```
 
-* The project uses matplotlib and numpy, if you don't have these packages, you can download them with the following commands.
+* The project uses matplotlib and numpy, you can download them with the following commands.
 ```{}
 sudo apt-get install python3-matplotlib
 sudo apt install python3-numpy
 ```
+* The project uses tkinter, you can download it with the following commands.
 
 ### Files content
 
