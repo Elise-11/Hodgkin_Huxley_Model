@@ -87,6 +87,7 @@ def savePlot():
     filename = filename.format(counter)
     Figure.savefig(filename)
 
+#ça fonctionne en lançant ces 3 commandes 
 #setParam(14,120,36,0.03,115,-12,10.6)
 #plotSimulation()
 #savePlot()
