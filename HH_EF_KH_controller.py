@@ -24,8 +24,7 @@ def setParam(Cm, gNa, gK, gLeak,ENa, EK,ELeak):
     model.ELeak = ELeak #typically 10.6
     return(Cm, gNa, gK, gLeak,ENa, EK,ELeak)
 
-#setParam(5, gNa, gK, gLeak,ENa, EK,ELeak)
-
+#essayer de mettre param direct dans plotSimulation
 def plotSimulation(): 
     # customize a stimulus waveform
     stimu = np.zeros(20000)
@@ -76,7 +75,6 @@ def plotSimulation():
     Fig1.tight_layout()
     return Fig1
 
-    
 
 
 def savePlot():
@@ -91,4 +89,4 @@ def savePlot():
 
 #setParam(14,120,36,0.03,115,-12,10.6)
 #plotSimulation()
-# savePlot()
+#savePlot()

@@ -14,29 +14,6 @@ root = tk.Tk()
 root.title('Hodgkin_Huxley Model Simulation')
 root.geometry('1000x700')
 
-
-#setparam puis sim
-#Plot 
-def plot():
-    #setParam(Cm_val,120,36,0.03,115,-12,10.6)
-    #plot_show = hh.plotSimulation()
-    canvas = plt.backends.backend_tkagg.FigureCanvasTkAgg(hh.plotSimulation(),master = root)
-    canvas.draw()
-    canvas.get_tk_widget().grid(row=3,column=1)
-
-#Button
-show_button = tk.Button(text ="Show", command= plot)
-save_button = tk.Button(text ="Save", command= hh.savePlot)
-
-
-show_button.grid(row=3,column=2)
-save_button.grid(row=3,column=3)
-
-#canvas
-empty_canvas = tk.Canvas(root, bg="white", height=400, width=500)
-empty_canvas.grid(row=3,column=1)
-
-
 #Entries and label 
 #Cm
 Cm_text= tk.StringVar()
@@ -125,10 +102,24 @@ ELeak_val = int(gNa_entry.get())
 
 
 
-# def validParam(): 
-        
-# validate_button = tk.Button(text ="Validate Parameters", command= validParam())
-# validate_button.grid(row=4,column=1)
+def plot():
+    #hh.setParam(Cm_val,gNa_val,gK_val,gLeak_val,ENa_val,EK_val,ELeak_val)
+    canvas = plt.backends.backend_tkagg.FigureCanvasTkAgg(hh.plotSimulation(),master = root)
+    canvas.draw()
+    canvas.get_tk_widget().grid(row=3,column=1)
+
+#Button
+show_button = tk.Button(text ="Show", command= plot)
+save_button = tk.Button(text ="Save", command= hh.savePlot)
+
+
+show_button.grid(row=3,column=2)
+save_button.grid(row=3,column=3)
+
+#canvas
+empty_canvas = tk.Canvas(root, bg="white", height=400, width=500)
+empty_canvas.grid(row=3,column=1)
+
 
 root.mainloop()
 root.destroy()
