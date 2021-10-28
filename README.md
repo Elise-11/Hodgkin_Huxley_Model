@@ -23,7 +23,7 @@
     
 ### Dependencies 
 
-* This project uses python3, if your python version is not update please write the following command in your terminal.
+* This project uses python3.9.5, if your python version is not updated please write the following command in your terminal.
 
 ```{}
 sudo apt update
@@ -41,10 +41,10 @@ sudo apt install python3-numpy
 sudo apt-get install python3-tk
 ```
 
-### Files content
+### Files contents
 
-* HH_EF_KH_model.py : classes of the model 
-* HH_EF_KH_controller.py : simulations of the model
+* HH_EF_KH_model.py : Model' classes
+* HH_EF_KH_controller.py : Model' simulation
 * HH_EF_KH_view.py : interface operation
 
 ### Launch the program (Command line)
