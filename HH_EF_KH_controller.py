@@ -36,15 +36,15 @@ def plotSimulation():
     sim.runSimulation(membraneVoltage=stimu, stepMs=0.01)
     
     Fig1 = plt.figure(figsize=(8, 6))
-    #stimulation
     
+    #stimulation
     ax1 = Fig1.add_subplot(411)
     ax1.plot(sim.times, stimu, color='deeppink')
     ax1.set_ylabel("Stimulation (µA/cm²)",fontsize = 8)
     ax1.set_xlabel(" Time (ms)")
-    ax1.set_title("Hodgkin-Huxley Model", fontSize=15)
+    ax1.set_title("Hodgkin-Huxley Model", fontsize=15)
     textstr = 'Cm=%2f\ngNa=%.2f\ngK=%.2f\ngLeak=%2f\nENa=%.2f\nEK=%.2f\nELeak=%.2f\n'%(model.Cm,model.gNa, model.gK, model.gLeak, model.ENa,model.EK,model.ELeak)
-    ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes, fontsize=6,
+    ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes,
             verticalalignment='top')
     
     
