@@ -45,7 +45,7 @@ def plotSimulation():
     ax1.set_title("Hodgkin-Huxley Model", fontsize=15)
     textstr = 'Cm=%2f\ngNa=%.2f\ngK=%.2f\ngLeak=%2f\nENa=%.2f\nEK=%.2f\nELeak=%.2f\n'%(model.Cm,model.gNa, model.gK, model.gLeak, model.ENa,model.EK,model.ELeak)
     ax1.text(0.05, 0.95, textstr, transform=ax1.transAxes,
-            verticalalignment='top')
+            verticalalignment='top', fontsize = 7)
     
     
     #gating variable states
