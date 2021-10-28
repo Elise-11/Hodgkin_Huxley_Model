@@ -15,8 +15,7 @@ root.title('Hodgkin_Huxley Model Simulation')
 root.geometry('1000x700')
 
 
-#Entry 
-
+#Entry variable
 Cm_var =tk.StringVar()
 gNa_var =tk.StringVar()
 gK_var =tk.StringVar()
@@ -25,6 +24,7 @@ ENa_var =tk.StringVar()
 EK_var=tk.StringVar()
 ELeak_var=tk.StringVar()
 
+#Change parameters 
 def validate():
     ELeak_val=float(ELeak_var.get())
     EK_val = int(EK_var.get())

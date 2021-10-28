@@ -15,7 +15,9 @@ model = HHModel()
 
 
 def setParam(Cm, gNa, gK, gLeak,ENa, EK,ELeak):
-    #possibility to change the values of the model parameter 
+    """
+    Possibility to change the values of the model parameter 
+    """
     model.Cm = Cm#typically 1 
     model.gNa = gNa # typically 120
     model.gK = gK # typically 36
@@ -25,8 +27,11 @@ def setParam(Cm, gNa, gK, gLeak,ENa, EK,ELeak):
     model.ELeak = ELeak #typically 10.6
     return(Cm, gNa, gK, gLeak,ENa, EK,ELeak)
 
-#essayer de mettre param direct dans plotSimulation
+
 def plotSimulation(): 
+    """
+    plot simulation according to the the model
+    """
     # customize a stimulus waveform
     stimu = np.zeros(20000)
     stimu[7000:13000] = 45  # add a square pulse
@@ -79,7 +84,9 @@ def plotSimulation():
 
 
 def savePlot():
-    #save each created plot 
+    """
+    Save plot simulation
+    """
     Figure = plotSimulation()
     filename = "HHModel{}.png"
     counter = 0
