@@ -60,7 +60,7 @@ python3 HH_EF_KH_view.py
 ```
 
 ### Simulations Examples 
-Here is a typical example of a plot obtained by the interface, which represents the triggering of action potentials according to the Hodgkin Huxley model : 
+Here is a typical example of a plot obtained by the interface, which represents the triggering of action potentials according to the Hodgkin Huxley model, with parameter values from Hodgkin-Huxley original paper : 
 
 ![plot](https://github.com/Elise-11/Hodgkin_Huxley_Model/blob/main/HHModel0.png)
 
